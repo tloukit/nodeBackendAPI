@@ -4,10 +4,13 @@ const mongoose = require('mongoose');
 
 const pollutionCityRoutes = require('./routes/pollutionCity');
 
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PWD = process.env.MONGO_PWD;
+const MONGO_CLUSTER = process.env.MONGO_CLUSTER;
 
 
-//mongoose.connect('mongodb+srv://ylerroux:Panam75015@cluster0.hp7ow.mongodb.net/test?retryWrites=true&w=majority',
-mongoose.connect('mongodb://localhost:27017/test',
+mongoose.connect(`mongodb+srv://${MONGO_USER}:${MONGO_PWD}@${MONGO_CLUSTER}?retryWrites=true&w=majority`,
+//mongoose.connect('mongodb://localhost:27017/test',
 { useNewUrlParser: true,
   useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
